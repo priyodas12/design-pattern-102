@@ -11,10 +11,18 @@ A Java learning catalog of the 23 classic (GoF) design patterns, grouped into th
   - `UiThemeAbstractFactory`: dark and light theme factories each make a matching `Button` and `Checkbox`.
   - `BurgerOrderBuilder`: a step-by-step, validated, immutable burger order with a computed price.
   - `DocumentTemplatePrototype`: deep-copied document templates, with a template registry.
+- **7 implemented structural patterns**, in the same style:
+  - `TravelPlugAdapter`: a US plug works in an EU socket through an adapter.
+  - `RemoteControlBridge`: basic and advanced remotes work with any device (TV or radio).
+  - `FileSystemComposite`: folders and files share one interface; a folder's size is the total of its contents.
+  - `CoffeeDecorator`: milk, sugar and whipped-cream add-ons stack onto a base drink.
+  - `HomeTheaterFacade`: one `watchMovie()` call drives the lights, projector, amplifier and player in order.
+  - `ForestFlyweight`: 1,000 trees share just 2 species objects.
+  - `ImageLoaderProxy`: images load lazily on first display and are cached afterwards.
 - **A README for each implemented pattern** with these sections: intent, analogy, when to use, roles, a text diagram, pros, cons, related patterns, and the run commands.
 - **A catalog completeness check:** `CatalogStructureTest` fails the build if any pattern is missing its README, `package-info.java` or test, or if its README's `**Status:**` line doesn't match the code.
 - **Clear errors:** examples throw `IllegalArgumentException` for bad input and `IllegalStateException` for an invalid state, each with a descriptive message.
-- **Placeholders for the 18 structural and behavioral patterns:** each has a README with its intent and the planned example, and a `@Disabled` test.
+- **Placeholders for the 11 behavioral patterns:** each has a README with its intent and the planned example, and a `@Disabled` test.
 
 ### Pattern Catalog
 
@@ -34,13 +42,13 @@ All 23 patterns by family. Each link opens that pattern's README. **Status** is 
 
 | Pattern | Family | Status |
 |---------|--------|--------|
-| [Adapter](src/main/java/learn/designpatterns/structural/adapter/README.md) | Structural | placeholder |
-| [Bridge](src/main/java/learn/designpatterns/structural/bridge/README.md) | Structural | placeholder |
-| [Composite](src/main/java/learn/designpatterns/structural/composite/README.md) | Structural | placeholder |
-| [Decorator](src/main/java/learn/designpatterns/structural/decorator/README.md) | Structural | placeholder |
-| [Facade](src/main/java/learn/designpatterns/structural/facade/README.md) | Structural | placeholder |
-| [Flyweight](src/main/java/learn/designpatterns/structural/flyweight/README.md) | Structural | placeholder |
-| [Proxy](src/main/java/learn/designpatterns/structural/proxy/README.md) | Structural | placeholder |
+| [Adapter](src/main/java/learn/designpatterns/structural/adapter/README.md) | Structural | implemented |
+| [Bridge](src/main/java/learn/designpatterns/structural/bridge/README.md) | Structural | implemented |
+| [Composite](src/main/java/learn/designpatterns/structural/composite/README.md) | Structural | implemented |
+| [Decorator](src/main/java/learn/designpatterns/structural/decorator/README.md) | Structural | implemented |
+| [Facade](src/main/java/learn/designpatterns/structural/facade/README.md) | Structural | implemented |
+| [Flyweight](src/main/java/learn/designpatterns/structural/flyweight/README.md) | Structural | implemented |
+| [Proxy](src/main/java/learn/designpatterns/structural/proxy/README.md) | Structural | implemented |
 
 #### Behavioral
 
@@ -104,7 +112,7 @@ design-pattern-102/
     ├── main/java/learn/designpatterns/
     │   ├── creational/                       # README.md overview + 5 pattern packages (implemented)
     │   │   └── builder/                      # e.g. BurgerOrderBuilder.java, README.md, package-info.java
-    │   ├── structural/                       # README.md overview + 7 pattern packages (placeholders)
+    │   ├── structural/                       # README.md overview + 7 pattern packages (implemented)
     │   └── behavioral/                       # README.md overview + 11 pattern packages (placeholders)
     └── test/java/learn/designpatterns/
         ├── CatalogStructureTest.java         # completeness and status check for all 23 patterns
@@ -118,7 +126,7 @@ Each pattern's README sits next to its code, so opening a pattern folder on GitH
 - **Framework:** JUnit Jupiter 6.1.3, run by Maven Surefire 3.6.1.
 - **Location:** `src/test/java/learn/designpatterns/`, in the same package as the code under test.
 - **Run:** `mvn test` (all) or `mvn test -Dtest=<Main>Test` (one pattern).
-- **Last run:** 97 tests, 0 failures, 0 errors, 18 skipped; `BUILD SUCCESS` in about 1.7 s.
+- **Last run:** 127 tests, 0 failures, 0 errors, 11 skipped; `BUILD SUCCESS` in about 1.8 s.
 
 | Test | Count | Covers |
 |------|-------|--------|
@@ -128,7 +136,14 @@ Each pattern's README sits next to its code, so opening a pattern folder on GitH
 | `UiThemeAbstractFactoryTest` | 5 | matching dark and light families; switching factories switches the family; missing factory rejected |
 | `BurgerOrderBuilderTest` | 7 | step-by-step build, price, description; immutable result; missing bun or patty and unknown patty rejected |
 | `DocumentTemplatePrototypeTest` | 6 | deep copy in both directions; registry hands out fresh copies; unknown template and blank title rejected |
-| 18 structural and behavioral placeholders | 18 | `@Disabled`, reported as skipped until each pattern is implemented |
+| `TravelPlugAdapterTest` | 5 | EU plug fits directly; US plug works through the adapter; adapter translates the interface; flat pins rejected without an adapter; null plug rejected |
+| `RemoteControlBridgeTest` | 6 | basic and advanced remotes on both TV and radio (power, volume, mute); volume kept within 0–100; null device rejected |
+| `FileSystemCompositeTest` | 7 | file size; folder total at any depth; empty folder; files and folders handled alike; tree rendering; negative size and cycles rejected |
+| `CoffeeDecoratorTest` | 5 | base price; add-ons stack description and price in order; the same add-on twice; a decorated drink is still a `Beverage`; null drink rejected |
+| `HomeTheaterFacadeTest` | 5 | one call runs the 6 start-up steps in order; shutdown in reverse; blank title rejected before any device moves; end without a movie, or a double start, rejected |
+| `ForestFlyweightTest` | 4 | 1,000 trees share 2 species objects; the factory returns the same object per species; each tree keeps its own position; blank species rejected |
+| `ImageLoaderProxyTest` | 5 | creating a proxy doesn't read the disk; first display loads once; repeats use the cache; only displayed images load; blank file name rejected |
+| 11 behavioral placeholders | 11 | `@Disabled`, reported as skipped until each pattern is implemented |
 
 ## Vulnerabilities
 
@@ -137,25 +152,28 @@ No security issues found in this scan. The table lists the only notes, all Info 
 | Severity | Location | Description | Suggested fix |
 |----------|----------|-------------|---------------|
 | Info | `src/main/java/learn/designpatterns/creational/singleton/AppConfigSingleton.java:60` | `getInt()` lets `NumberFormatException` escape for non-numeric settings, instead of the project's usual `IllegalArgumentException` with a clear message. This is not a security risk, because all values are hardcoded. | Catch the exception, rethrow it as `IllegalArgumentException`, and add a test. |
-| Info | `pom.xml:11` | Leftover quickstart `<url>http://maven.apache.org</url>`. It's metadata only and never fetched. | Remove it, or point it at this repository. |
+| Info | `pom.xml:11` | Leftover quickstart `<url>http://maven.apache.org</url>`. It's metadata only and never fetched. | Remove it, or point it at `https://github.com/priyodas12/design-pattern-102`. |
 
 What was checked:
 
 - `grep -rnIEi` over all tracked files for credentials, API keys and tokens (AWS, GitHub, Slack, Stripe, Google, Anthropic and OpenAI formats, JWTs), private keys, connection strings, basic-auth URLs, emails, phone numbers and card numbers. Nothing found beyond false positives in documentation.
-- A search for sensitive files (`.env*`, key stores, `credentials*`, `secrets*`, `*.tfvars`, SQL dumps). None found.
-- Code patterns: process execution, SQL, deserialization, weak crypto or `Random`, TLS overrides, XML parsers, network calls. None found.
-- Git history (2 commits) for secrets. Clean.
+- A search for sensitive files (`.env*`, key stores, `credentials*`, `secrets*`, `*.tfvars`, SQL dumps, `.bak`). None found, now or anywhere in git history.
+- Code patterns: process execution, SQL, deserialization, weak crypto or `Random`, TLS overrides, XML parsers, network calls, environment access. None found. `EuSocket` (Adapter) and `FileLeaf` (Composite) matched the patterns by name only; both are in-memory examples with no network or file access.
+- The full git history (5 commits, including PR #1 and the merge from `main`, as pushed to GitHub) for secrets. Clean. The remote URL contains no credentials.
 - **No dependency audit tool was available.** OWASP `dependency-check`, `osv-scanner` and `trivy` aren't installed. I reviewed the versions by hand instead: everything is pinned, and the only library, JUnit Jupiter, is test-scoped.
 
 This scan is not a substitute for a full security audit.
 
 ## Future Scope
 
-- **Implement the 7 structural patterns** (Phase 5 / US3 in [`tasks.md`](specs/feature/design-pattern-catalog/tasks.md)): Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.
-- **Implement the 11 behavioral patterns** (Phase 6 / US4): Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor.
+- **Implement the 11 behavioral patterns** (Phase 6 / US4 in [`tasks.md`](specs/feature/design-pattern-catalog/tasks.md)): Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor.
 - **Resolve the open spec question** in [`spec.md`](specs/feature/design-pattern-catalog/spec.md): should US2–US4 ship in this feature, or in follow-up features?
 - **Fix `AppConfigSingleton.getInt`** to throw `IllegalArgumentException` for non-numeric values, and add a test for it.
 - **Clean up `pom.xml` metadata:** `groupId` is still `org.example`, and the old `<url>` remains.
 - **Improve test report names:** parameterized `CatalogStructureTest` cases show as `[1]`, `[2]`, ... in Surefire output, though each failure message names its pattern.
-- **Set up dependency scanning** (`dependency-check-maven` or `osv-scanner`) before adding any runtime dependency.
+- **Run the Phase 7 polish tasks** (T061–T064): a final README and links review, 3 identical full-suite runs, and the feature status in `CLAUDE.md`.
+- **Add CI:** there is no `.github/workflows/` yet, so pull requests aren't checked automatically. A GitHub Actions job running `mvn -B test` on JDK 21 would enforce `CatalogStructureTest` and the behavior tests on every PR.
+- **Set up dependency scanning** (`dependency-check-maven` or `osv-scanner`) before adding any runtime dependency, and enable GitHub secret scanning and Dependabot alerts for the repository.
+- **Make `ImageLoaderProxy` thread-safe if it's reused:** its lazy loading can read the disk twice under concurrent first calls. Its README notes this as a con.
+- **Shorten `RemoteControlBridge`:** it is 126 lines, slightly over the ~120-line target for examples.
 - **Add a Maven wrapper** (`mvn wrapper:wrapper`) so contributors don't need Maven installed. Note that `.gitignore` currently ignores `.mvn/wrapper/maven-wrapper.jar`.
