@@ -10,7 +10,7 @@
 - Maven 3.6.3+ (3.10.0 installed). No Maven wrapper.
 - JUnit Jupiter 6.1.3 (test scope). No other dependencies.
 - Pinned plugins: enforcer 3.7.0, compiler 3.16.0, surefire 3.6.1, exec 3.6.4.
-- *Status:* the current `pom.xml` is still the quickstart (JUnit 4.13.2, no release set) until task T001 of `design-pattern-catalog` is done.
+- Build checked (enforcer rules pass) on JDK 27.0.1 and Maven 3.10.0.
 
 ## Commands
 
@@ -19,7 +19,7 @@
 | Build | `mvn -q compile` |
 | Test all | `mvn test` |
 | Test one pattern | `mvn test -Dtest=CoffeeDecoratorTest` |
-| Run one example | `mvn -q compile exec:java -Dexec.mainClass=learn.designpatterns.structural.decorator.CoffeeDecorator` *(needs exec plugin; T001)* |
+| Run one example | `mvn -q compile exec:java -Dexec.mainClass=learn.designpatterns.structural.decorator.CoffeeDecorator` |
 | Package | `mvn package` |
 | Lint / format | none yet; record the command here if one is added |
 

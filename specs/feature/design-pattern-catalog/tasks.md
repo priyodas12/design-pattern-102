@@ -4,43 +4,43 @@
 
 Format: `- [ ] T### [P] [US#] description`. `[P]` means the task can run in parallel with other `[P]` tasks in the same phase. Tick each task in the same commit as its code.
 
-## Phase 1: Setup (1/4)
+## Phase 1: Setup (4/4)
 
-- [ ] T001 Update `pom.xml`: set `maven.compiler.release` to 21; replace `junit:junit:4.13.2` with `org.junit.jupiter:junit-jupiter:6.1.3` (test scope); pin `maven-enforcer-plugin` 3.7.0 (Maven `[3.6.3,)`, Java `[21,)`), `maven-compiler-plugin` 3.16.0, `maven-surefire-plugin` 3.6.1 and `exec-maven-plugin` 3.6.4 (research R1, R2, R8)
-- [ ] T002 Delete the quickstart code: `src/main/java/org/example/App.java` and `src/test/java/org/example/AppTest.java` (research R4)
+- [x] T001 Update `pom.xml`: set `maven.compiler.release` to 21; replace `junit:junit:4.13.2` with `org.junit.jupiter:junit-jupiter:6.1.3` (test scope); pin `maven-enforcer-plugin` 3.7.0 (Maven `[3.6.3,)`, Java `[21,)`), `maven-compiler-plugin` 3.16.0, `maven-surefire-plugin` 3.6.1 and `exec-maven-plugin` 3.6.4 (research R1, R2, R8)
+- [x] T002 Delete the quickstart code: `src/main/java/org/example/App.java` and `src/test/java/org/example/AppTest.java` (research R4)
 - [x] T003 Create the project rules file `CLAUDE.md` (written by `/gen-spec`)
-- [ ] T004 Check that `mvn -q compile` succeeds on JDK 27 and that the enforcer rules pass; record any command changes in `CLAUDE.md`
+- [x] T004 Check that `mvn -q compile` succeeds on JDK 27 and that the enforcer rules pass; record any command changes in `CLAUDE.md`
 
-## Phase 2: Foundational (0/1)
+## Phase 2: Foundational (1/1)
 
-- [ ] T005 Write `src/test/java/learn/designpatterns/CatalogStructureTest.java`: the 23-entry `(family, package, testClass, mainClass)` table from plan.md; for each entry, check that `README.md`, `package-info.java` and the test file exist, and that the README `**Status:**` line matches whether `<mainClass>.java` exists (data-model V1 to V3; FR-001, FR-005, FR-015). This test should **fail** until Phase 3 is done.
+- [x] T005 Write `src/test/java/learn/designpatterns/CatalogStructureTest.java`: the 23-entry `(family, package, testClass, mainClass)` table from plan.md; for each entry, check that `README.md`, `package-info.java` and the test file exist, and that the README `**Status:**` line matches whether `<mainClass>.java` exists (data-model V1 to V3; FR-001, FR-005, FR-015). This test should **fail** until Phase 3 is done.
 
-## Phase 3: US1 (P1) Catalog skeleton (0/6)
+## Phase 3: US1 (P1) Catalog skeleton (6/6)
 
-- [ ] T006 [P] [US1] Creational skeleton: for each of `singleton`, `factorymethod`, `abstractfactory`, `builder` and `prototype`, create `src/main/java/learn/designpatterns/creational/<pkg>/package-info.java`, `src/main/java/learn/designpatterns/creational/<pkg>/README.md` (placeholder template, contracts/pattern-readme.md) and `src/test/java/learn/designpatterns/creational/<pkg>/<Main>Test.java` with one `@Disabled("Placeholder: not implemented yet")` test
-- [ ] T007 [P] [US1] Structural skeleton: the same 3 files for each of `adapter`, `bridge`, `composite`, `decorator`, `facade`, `flyweight` and `proxy`, under `src/main/java/learn/designpatterns/structural/` and `src/test/java/learn/designpatterns/structural/`
-- [ ] T008 [P] [US1] Behavioral skeleton: the same 3 files for each of `chainofresponsibility`, `command`, `interpreter`, `iterator`, `mediator`, `memento`, `observer`, `state`, `strategy`, `templatemethod` and `visitor`, under `src/main/java/learn/designpatterns/behavioral/` and `src/test/java/learn/designpatterns/behavioral/`
-- [ ] T009 [P] [US1] Family overviews: `src/main/java/learn/designpatterns/creational/README.md`, `src/main/java/learn/designpatterns/structural/README.md` and `src/main/java/learn/designpatterns/behavioral/README.md`, each with a pattern, intent and status table (FR-006)
-- [ ] T010 [US1] Add a `## Pattern Catalog` index to the root `README.md`: 3 tables with 23 rows, linking to each pattern README, with status `placeholder` (FR-007)
-- [ ] T011 [US1] Run the quickstart.md US1 walkthrough: `mvn test` shows 0 failures and 23 skipped, `CatalogStructureTest` passes, and the negative check (a missing README fails the build and names the pattern) passes
+- [x] T006 [P] [US1] Creational skeleton: for each of `singleton`, `factorymethod`, `abstractfactory`, `builder` and `prototype`, create `src/main/java/learn/designpatterns/creational/<pkg>/package-info.java`, `src/main/java/learn/designpatterns/creational/<pkg>/README.md` (placeholder template, contracts/pattern-readme.md) and `src/test/java/learn/designpatterns/creational/<pkg>/<Main>Test.java` with one `@Disabled("Placeholder: not implemented yet")` test
+- [x] T007 [P] [US1] Structural skeleton: the same 3 files for each of `adapter`, `bridge`, `composite`, `decorator`, `facade`, `flyweight` and `proxy`, under `src/main/java/learn/designpatterns/structural/` and `src/test/java/learn/designpatterns/structural/`
+- [x] T008 [P] [US1] Behavioral skeleton: the same 3 files for each of `chainofresponsibility`, `command`, `interpreter`, `iterator`, `mediator`, `memento`, `observer`, `state`, `strategy`, `templatemethod` and `visitor`, under `src/main/java/learn/designpatterns/behavioral/` and `src/test/java/learn/designpatterns/behavioral/`
+- [x] T009 [P] [US1] Family overviews: `src/main/java/learn/designpatterns/creational/README.md`, `src/main/java/learn/designpatterns/structural/README.md` and `src/main/java/learn/designpatterns/behavioral/README.md`, each with a pattern, intent and status table (FR-006)
+- [x] T010 [US1] Add a `## Pattern Catalog` index to the root `README.md`: 3 tables with 23 rows, linking to each pattern README, with status `placeholder` (FR-007)
+- [x] T011 [US1] Run the quickstart.md US1 walkthrough: `mvn test` shows 0 failures and 23 skipped, `CatalogStructureTest` passes, and the negative check (a missing README fails the build and names the pattern) passes
 
 **Checkpoint:** the US1 independent test from spec.md passes. US1 can be merged on its own.
 
-## Phase 4: US2 (P2) Creational patterns (0/11)
+## Phase 4: US2 (P2) Creational patterns (11/11)
 
 Tests come first: each test task replaces the `@Disabled` placeholder with real behavior tests, which fail to compile or fail until the matching implementation task is done.
 
-- [ ] T012 [P] [US2] Singleton: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/singleton/AppConfigSingletonTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
-- [ ] T013 [US2] Singleton: implement `src/main/java/learn/designpatterns/creational/singleton/AppConfigSingleton.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/singleton/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/singleton/package-info.java` status
-- [ ] T014 [P] [US2] Factory Method: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/factorymethod/LogisticsFactoryMethodTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
-- [ ] T015 [US2] Factory Method: implement `src/main/java/learn/designpatterns/creational/factorymethod/LogisticsFactoryMethod.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/factorymethod/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/factorymethod/package-info.java` status
-- [ ] T016 [P] [US2] Abstract Factory: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/abstractfactory/UiThemeAbstractFactoryTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
-- [ ] T017 [US2] Abstract Factory: implement `src/main/java/learn/designpatterns/creational/abstractfactory/UiThemeAbstractFactory.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/abstractfactory/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/abstractfactory/package-info.java` status
-- [ ] T018 [P] [US2] Builder: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/builder/BurgerOrderBuilderTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
-- [ ] T019 [US2] Builder: implement `src/main/java/learn/designpatterns/creational/builder/BurgerOrderBuilder.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/builder/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/builder/package-info.java` status
-- [ ] T020 [P] [US2] Prototype: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/prototype/DocumentTemplatePrototypeTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
-- [ ] T021 [US2] Prototype: implement `src/main/java/learn/designpatterns/creational/prototype/DocumentTemplatePrototype.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/prototype/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/prototype/package-info.java` status
-- [ ] T022 [US2] Set all creational rows to implemented in `src/main/java/learn/designpatterns/creational/README.md` and the root `README.md` index; run quickstart.md US2 walkthrough (`mvn test` shows 0 skipped for `learn.designpatterns.creational`, `CatalogStructureTest` passes)
+- [x] T012 [P] [US2] Singleton: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/singleton/AppConfigSingletonTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
+- [x] T013 [US2] Singleton: implement `src/main/java/learn/designpatterns/creational/singleton/AppConfigSingleton.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/singleton/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/singleton/package-info.java` status
+- [x] T014 [P] [US2] Factory Method: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/factorymethod/LogisticsFactoryMethodTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
+- [x] T015 [US2] Factory Method: implement `src/main/java/learn/designpatterns/creational/factorymethod/LogisticsFactoryMethod.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/factorymethod/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/factorymethod/package-info.java` status
+- [x] T016 [P] [US2] Abstract Factory: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/abstractfactory/UiThemeAbstractFactoryTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
+- [x] T017 [US2] Abstract Factory: implement `src/main/java/learn/designpatterns/creational/abstractfactory/UiThemeAbstractFactory.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/abstractfactory/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/abstractfactory/package-info.java` status
+- [x] T018 [P] [US2] Builder: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/builder/BurgerOrderBuilderTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
+- [x] T019 [US2] Builder: implement `src/main/java/learn/designpatterns/creational/builder/BurgerOrderBuilder.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/builder/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/builder/package-info.java` status
+- [x] T020 [P] [US2] Prototype: write behavior and error-path tests in `src/test/java/learn/designpatterns/creational/prototype/DocumentTemplatePrototypeTest.java`, removing `@Disabled` (defining behavior: see plan.md pattern table)
+- [x] T021 [US2] Prototype: implement `src/main/java/learn/designpatterns/creational/prototype/DocumentTemplatePrototype.java` per contracts/pattern-module.md; fill `src/main/java/learn/designpatterns/creational/prototype/README.md` with all 9 sections and set `Status: implemented`; update `src/main/java/learn/designpatterns/creational/prototype/package-info.java` status
+- [x] T022 [US2] Set all creational rows to implemented in `src/main/java/learn/designpatterns/creational/README.md` and the root `README.md` index; run quickstart.md US2 walkthrough (`mvn test` shows 0 skipped for `learn.designpatterns.creational`, `CatalogStructureTest` passes)
 
 **Checkpoint:** US2 independent test from spec.md passes: all 5 creational examples run, READMEs are complete, and their tests pass with 0 skipped.
 
