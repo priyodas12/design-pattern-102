@@ -55,9 +55,14 @@ public final class AppConfigSingleton {
         return value;
     }
 
-    /** Returns a numeric setting. */
+    /** Returns a numeric setting, or throws if the key is unknown or its value is not a number. */
     public int getInt(String key) {
-        return Integer.parseInt(get(key));
+        String value = get(key);
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Setting " + key + " is not a number: " + value, e);
+        }
     }
 
     /** A read-only view of all settings. */

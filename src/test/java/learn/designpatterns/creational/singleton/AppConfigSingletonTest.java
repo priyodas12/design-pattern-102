@@ -74,6 +74,14 @@ class AppConfigSingletonTest {
     }
 
     @Test
+    @DisplayName("reading a text setting as a number fails with a clear message")
+    void nonNumericSettingRejected() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> AppConfigSingleton.getInstance().getInt("app.name"));
+        assertEquals("Setting app.name is not a number: Design Pattern Catalog", ex.getMessage());
+    }
+
+    @Test
     @DisplayName("unknown key fails with a clear message")
     void unknownKeyRejected() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
